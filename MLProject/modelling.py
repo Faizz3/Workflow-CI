@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import load_wine
+from sklearn.datasets import load_breast_cancer
 from sklearn.preprocessing import StandardScaler
 import mlflow
 import mlflow.sklearn
@@ -11,7 +11,7 @@ def run_training():
     mlflow.autolog()
     
     # Memuat data (untuk CI kita gunakan sklearn datasets agar self-contained)
-    data = load_wine()
+    data = load_breast_cancer()
     X = pd.DataFrame(StandardScaler().fit_transform(data.data), columns=data.feature_names)
     y = data.target
     
